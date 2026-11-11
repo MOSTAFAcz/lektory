@@ -1,0 +1,120 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-ink antialiased;
+  }
+
+  ::selection {
+    @apply bg-lime text-ink;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-8xl px-5 sm:px-8 lg:px-12;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[3rem] items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-bold transition duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ink focus-visible:ring-offset-2 focus-visible:ring-offset-cream disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply bg-ink text-cream hover:-translate-y-0.5 hover:bg-moss;
+  }
+
+  .btn-lime {
+    @apply bg-lime text-ink hover:-translate-y-0.5 hover:bg-[#c9e84f];
+  }
+
+  .btn-outline {
+    @apply border border-ink/20 bg-transparent text-ink hover:border-ink hover:bg-ink hover:text-cream;
+  }
+
+  .section-kicker {
+    @apply text-[0.68rem] font-bold uppercase tracking-[0.22em] text-moss;
+  }
+
+  .field-label {
+    @apply mb-1.5 block text-xs font-bold uppercase tracking-[0.1em] text-ink/45;
+  }
+
+  .field {
+    @apply w-full rounded-2xl border border-ink/15 bg-cream/60 px-4 py-3.5 text-sm font-medium text-ink transition placeholder:text-ink/30 focus:border-ink focus:bg-paper focus:outline-none focus:ring-4 focus:ring-lime/40;
+  }
+
+  .field-icon {
+    @apply pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-ink/35;
+  }
+}
+
+@layer utilities {
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.hero-glow {
+  background:
+    radial-gradient(52% 46% at 84% 18%, rgba(216, 242, 90, 0.42), transparent 72%),
+    radial-gradient(42% 42% at 4% 62%, rgba(229, 120, 88, 0.12), transparent 72%);
+}
+
+.hero-glow::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(19, 37, 28, 0.045) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(19, 37, 28, 0.045) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: linear-gradient(to bottom, black, transparent 72%);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent 72%);
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-marquee {
+    animation: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+  }
+}

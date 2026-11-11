@@ -1,0 +1,10 @@
+node_modules/
+client/node_modules/
+client/dist/
+*.log
+.env
+.env.*
+.DS_Store
+.opencode/
+.vscode/
+.idea/
